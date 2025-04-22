@@ -1,0 +1,70 @@
+package filemanagement.dev.git.file.commun;
+import filemanagement.dev.git.file.dto.ErrorField;
+import filemanagement.dev.git.file.dto.ErrorResponse;
+import filemanagement.dev.git.file.exception.DuplicateRecord;
+import filemanagement.dev.git.file.exception.OperationNotPermitted;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.nio.file.AccessDeniedException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@RestControllerAdvice
+@Slf4j
+public class GlobalException {
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+
+        log.error("Erro de Validação : {}", e.getMessage());
+
+
+        List<FieldError> fileHandlers = e.getFieldErrors();
+
+        List<ErrorField> collect = fileHandlers.stream().map(erro -> new ErrorField(erro.getField(), erro.getDefaultMessage())).collect(Collectors.toList());
+
+        return new ErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY.value(), "Erro de Validação!", collect);
+    }
+
+    @ExceptionHandler(DuplicateRecord.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse DuplicateRecord(DuplicateRecord e) {
+
+        return new ErrorResponse(HttpStatus.CONFLICT.value(), "Valor já registrado no sistema!", List.of());
+
+    }
+
+    @ExceptionHandler(OperationNotPermitted.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse Operationnotpermitted(OperationNotPermitted e) {
+
+        return ErrorResponse.conflict(e.getMessage());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handlerAccessDeniedException(AccessDeniedException e) {
+
+        return new ErrorResponse(HttpStatus.FORBIDDEN.value(), "Acesso Negado!", List.of());
+    }
+
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse UnexpectedOperation(RuntimeException e) {
+
+        log.error("Erro inesperaod: {}", e.getMessage());
+
+        return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Ocorreu um erro inesperado, entre em contato com o suporte para maiores informaçãoes!", List.of());
+
+    }
+
+
+}
