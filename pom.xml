@@ -13,7 +13,9 @@
 	<description>Projeto de gerenciamento de arquivo</description>
 	<properties>
 		<java.version>23</java.version>
+
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+
 	</properties>
 	<dependencies>
 		<!--  Spring Boot  -->

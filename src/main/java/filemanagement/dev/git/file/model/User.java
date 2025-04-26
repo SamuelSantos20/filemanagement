@@ -9,8 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode
 @EntityListeners(AuditingEntityListener.class)
 public class User {
@@ -26,6 +25,8 @@ public class User {
     private String passwordHash;
 
     private Integer uploadLimit;
+
+
 
 
 }
