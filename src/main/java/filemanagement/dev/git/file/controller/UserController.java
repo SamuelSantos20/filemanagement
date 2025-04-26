@@ -23,7 +23,7 @@ public class UserController {
 
     private final UserMapper userMapper;
 
-    private static final int USER_LIMIT = 4;
+    private static final int USER_LIMIT = 2;
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody @Validated UserDto userDto) {
