@@ -1,4 +1,5 @@
 package filemanagement.dev.git.file.commun;
+
 import filemanagement.dev.git.file.dto.ErrorField;
 import filemanagement.dev.git.file.dto.ErrorResponse;
 import filemanagement.dev.git.file.exception.DuplicateRecord;
@@ -18,6 +19,8 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 @Slf4j
 public class GlobalException {
+
+    /// Classe Global Atualizada
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
