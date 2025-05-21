@@ -1,4 +1,4 @@
-package filemanagement.dev.git.file.Config;
+package filemanagement.dev.git.file.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

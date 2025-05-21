@@ -4,7 +4,6 @@ import filemanagement.dev.git.file.controller.VideoController;
 import filemanagement.dev.git.file.dto.VideoDto;
 import filemanagement.dev.git.file.mapper.VideoMapper;
 import filemanagement.dev.git.file.model.Video;
-import filemanagement.dev.git.file.service.VideoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -1,7 +1,7 @@
 package filemanagement.dev.git.file.controllerTest.S3ConfigTest;
 
-import filemanagement.dev.git.file.config.S3ClientConfig;
-import filemanagement.dev.git.file.config.S3Properties;
+import filemanagement.dev.git.file.Config.S3ClientConfig;
+import filemanagement.dev.git.file.Config.S3Properties;
 import filemanagement.dev.git.file.service.S3CompatibleClient;
 
 import java.time.Duration;

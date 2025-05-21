@@ -1,7 +1,7 @@
 package filemanagement.dev.git.file.service;
 
 
-import filemanagement.dev.git.file.Config.S3Properties;
+import filemanagement.dev.git.file.config.S3Properties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

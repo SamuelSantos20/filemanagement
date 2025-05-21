@@ -1,4 +1,4 @@
-package filemanagement.dev.git.file.Config;
+package filemanagement.dev.git.file.config;
 
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
